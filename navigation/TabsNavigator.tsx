@@ -11,7 +11,7 @@ interface ITabsNavigatorProps extends INavigationProps {}
 const TabsNavigator: React.FC<ITabsNavigatorProps> = ({ navigation, route }) => {
   useLayoutEffect(() => {
     navigation.setOptions({
-      headerTitle: 'Expenses Tracker',
+      headerTitle: '',
       headerTitleAlign: 'center',
       headerShown: false,
     });
