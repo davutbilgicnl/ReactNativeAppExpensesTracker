@@ -1,14 +1,14 @@
 import { Text, View } from 'react-native';
 import { INavigationProps } from '../interfaces/INavigationProps';
 
-export type RecentExpensesProps = {
-  navProps: INavigationProps;
-};
+export interface IRecentExpensesProps extends INavigationProps {}
 
-const RecentExpenses: React.FC<RecentExpensesProps> = ({ navProps }) => {
+const RecentExpenses: React.FC<IRecentExpensesProps> = ({ navigation, route }) => {
   return (
     <View>
-      <Text>All Expenses</Text>
+      <Text>Recent Expenses</Text>
     </View>
   );
 };
+
+export default RecentExpenses;

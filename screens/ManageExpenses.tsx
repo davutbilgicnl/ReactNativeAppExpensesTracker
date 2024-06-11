@@ -1,13 +1,14 @@
 import { Text, View } from 'react-native';
 import { INavigationProps } from '../interfaces/INavigationProps';
 
-export type ManageExpensesProps = {
-  navProps: INavigationProps;
-};
-const ManageExpenses: React.FC<ManageExpensesProps> = ({ navProps }) => {
+export interface IManageExpensesProps extends INavigationProps {}
+
+const ManageExpenses: React.FC<IManageExpensesProps> = ({ navigation, route }) => {
   return (
     <View>
-      <Text>All Expenses</Text>
+      <Text>Manage Expenses</Text>
     </View>
   );
 };
+
+export default ManageExpenses;
