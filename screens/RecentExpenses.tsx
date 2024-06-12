@@ -3,6 +3,9 @@ import { INavigationProps } from '../interfaces/INavigationProps';
 import { useSelector } from 'react-redux';
 import { RootState } from '../store/redux/store';
 import { ThemeColors } from '../theme/colors';
+import ExpensesOutput from '../components/ExpensesOutput/ExpensesOutput';
+
+import { DUMMY_EXPENSES } from '../data/dummy-data';
 
 export interface IRecentExpensesProps extends INavigationProps {}
 
@@ -12,7 +15,8 @@ const RecentExpenses: React.FC<IRecentExpensesProps> = ({ navigation, route }) =
 
   return (
     <View style={styles.container}>
-      <Text style={styles.text}>Recent Expenses</Text>
+      {/* <Text style={styles.text}>Recent Expenses</Text> */}
+      <ExpensesOutput expenses={DUMMY_EXPENSES} periodName="Last 7 Days" />
     </View>
   );
 };
@@ -22,9 +26,9 @@ export default RecentExpenses;
 const createStyles = (colors: ThemeColors) =>
   StyleSheet.create({
     container: {
-      flex: 1,
-      justifyContent: 'center',
-      alignItems: 'center',
+      // flex: 1,
+      // justifyContent: 'center',
+      // alignItems: 'center',
       backgroundColor: colors.secondary,
     },
     text: {
