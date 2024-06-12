@@ -3,18 +3,20 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import TabsNavigator from './TabsNavigator';
 import ManageExpenses from '../screens/ManageExpenses';
 import { Appearance, useColorScheme } from 'react-native';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { setTheme } from '../store/redux/theme-slice';
+import { useSelector } from 'react-redux';
+import { RootState } from '../store/redux/store';
 
 const Stack = createNativeStackNavigator();
 
 const AppNavigator = () => {
-  const deviceTheme = useColorScheme();
   const dispatch = useDispatch();
+  const isOnDarkTheme = useSelector((state: RootState) => state.theme.isDarkTheme);
 
   const handleAppearanceChange = (preferences: Appearance.AppearancePreferences) => {
-    const theme = deviceTheme === 'dark' ? 'dark' : 'light';
+    const theme = preferences.colorScheme === 'dark' ? 'dark' : 'light';
     dispatch(setTheme(theme));
   };
 
@@ -22,7 +24,7 @@ const AppNavigator = () => {
     const subscription = Appearance.addChangeListener(handleAppearanceChange);
 
     return () => subscription.remove();
-  }, [deviceTheme]);
+  }, [isOnDarkTheme]);
   return (
     <NavigationContainer>
       <Stack.Navigator>

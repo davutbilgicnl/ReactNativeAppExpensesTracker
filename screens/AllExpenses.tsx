@@ -1,22 +1,34 @@
-import { Text, View } from 'react-native';
+import { Text, View, StyleSheet } from 'react-native';
 import { INavigationProps } from '../interfaces/INavigationProps';
-import { useLayoutEffect } from 'react';
+import { useSelector } from 'react-redux';
+import { RootState } from '../store/redux/store';
+import { ThemeColors } from '../theme/colors';
 
 export interface IAllExpensesProps extends INavigationProps {}
 
 const AllExpenses: React.FC<IAllExpensesProps> = ({ navigation, route }) => {
-  useLayoutEffect(() => {
-    navigation.setOptions({
-      headerTitle: 'All Expenses',
-      headerTitleAlign: 'center',
-      headerShown: true,
-    });
-  }, [navigation]);
+  const colors = useSelector((state: RootState) => state.theme.colors);
+  const styles = createStyles(colors);
+
   return (
-    <View>
-      <Text>All Expenses</Text>
+    <View style={styles.container}>
+      <Text style={styles.text}>All Expenses</Text>
     </View>
   );
 };
 
 export default AllExpenses;
+
+const createStyles = (colors: ThemeColors) =>
+  StyleSheet.create({
+    container: {
+      flex: 1,
+      justifyContent: 'center',
+      alignItems: 'center',
+      backgroundColor: colors.secondary,
+    },
+    text: {
+      color: colors.text,
+      fontSize: 18,
+    },
+  });
