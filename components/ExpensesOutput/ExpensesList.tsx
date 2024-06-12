@@ -1,6 +1,8 @@
 import { FlatList } from 'react-native';
 
-const ExpensesList = () => {
+interface IExpensesListProps {}
+
+const ExpensesList: React.FC<IExpensesListProps> = () => {
   return <FlatList />;
 };
 

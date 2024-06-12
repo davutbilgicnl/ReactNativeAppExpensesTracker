@@ -1,10 +1,21 @@
 import { Text, View } from 'react-native';
+import { IExpense } from '../../interfaces/IExpense';
 
-const ExpensesSummary = () => {
+interface IExpensesSummaryProps {
+  expenses: IExpense[];
+  periodName: string;
+}
+
+const ExpensesSummary: React.FC<IExpensesSummaryProps> = ({ expenses, periodName }) => {
+  const initalValueOfSum = 0;
+  const expensesSummary = expenses.reduce((sum, expense) => {
+    return sum + expense.amount;
+  }, initalValueOfSum);
+
   return (
     <View>
-      <Text>Last 7 Days</Text>
-      <Text>$177.95</Text>
+      <Text>{periodName}</Text>
+      <Text>${expensesSummary.toFixed(2)}</Text>
     </View>
   );
 };

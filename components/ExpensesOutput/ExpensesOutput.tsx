@@ -1,13 +1,17 @@
 import { View } from 'react-native';
 import ExpensesList from './ExpensesList';
 import ExpensesSummary from './ExpensesSummary';
+import { IExpense } from '../../interfaces/IExpense';
 
-interface IExpensesOutputProps {}
+interface IExpensesOutputProps {
+  expenses: IExpense[];
+  periodName: string;
+}
 
-const ExpensesOutput: React.FC<IExpensesOutputProps> = () => {
+const ExpensesOutput: React.FC<IExpensesOutputProps> = ({ expenses, periodName }) => {
   return (
     <View>
-      <ExpensesSummary />
+      <ExpensesSummary expenses={expenses} periodName={periodName} />
       <ExpensesList />
     </View>
   );
