@@ -1,5 +1,6 @@
 import { Text, View } from 'react-native';
 import { IExpense } from '../../interfaces/IExpense';
+import { formatCurrency } from '../../i18n/currency';
 
 interface IExpensesSummaryProps {
   expenses: IExpense[];
@@ -12,10 +13,12 @@ const ExpensesSummary: React.FC<IExpensesSummaryProps> = ({ expenses, periodName
     return sum + expense.amount;
   }, initalValueOfSum);
 
+  const amountWithCurrency = formatCurrency(expensesSummary);
+
   return (
     <View>
       <Text>{periodName}</Text>
-      <Text>${expensesSummary.toFixed(2)}</Text>
+      <Text>{amountWithCurrency}</Text>
     </View>
   );
 };

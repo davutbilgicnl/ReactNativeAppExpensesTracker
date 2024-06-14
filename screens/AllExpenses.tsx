@@ -6,6 +6,7 @@ import { ThemeColors } from '../theme/colors';
 import ExpensesOutput from '../components/ExpensesOutput/ExpensesOutput';
 
 import { DUMMY_EXPENSES } from '../data/dummy-data';
+import { translations } from '../i18n/translations';
 
 export interface IAllExpensesProps extends INavigationProps {}
 
@@ -16,7 +17,7 @@ const AllExpenses: React.FC<IAllExpensesProps> = ({ navigation, route }) => {
   return (
     <View style={styles.container}>
       {/* <Text style={styles.text}>All Expenses</Text> */}
-      <ExpensesOutput expenses={DUMMY_EXPENSES} periodName="Total" />
+      <ExpensesOutput expenses={DUMMY_EXPENSES} periodName={translations.total} />
     </View>
   );
 };

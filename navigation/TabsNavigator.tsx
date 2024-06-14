@@ -7,6 +7,7 @@ import AllExpenses from '../screens/AllExpenses';
 import { INavigationProps } from '../interfaces/INavigationProps';
 import { useSelector } from 'react-redux';
 import { RootState } from '../store/redux/store';
+import { translations } from '../i18n/translations';
 
 const BottomTab = createBottomTabNavigator();
 
@@ -37,8 +38,8 @@ const TabsNavigator: React.FC<ITabsNavigatorProps> = ({ navigation, route }) => 
         name="RecentExpenses"
         component={RecentExpenses}
         options={{
-          title: 'Recent Expenses',
-          tabBarLabel: 'Recent',
+          title: translations.recentExpenses,
+          tabBarLabel: translations.recent,
           headerTitleAlign: 'center',
           headerShown: true,
           tabBarIcon: ({ color, size }) => <Ionicons name="hourglass" size={size} color={color} />,
@@ -49,8 +50,8 @@ const TabsNavigator: React.FC<ITabsNavigatorProps> = ({ navigation, route }) => 
         name="AllExpenses"
         component={AllExpenses}
         options={{
-          title: 'All Expenses',
-          tabBarLabel: 'All Expenses',
+          title: translations.allExpenses,
+          tabBarLabel: translations.all,
           headerTitleAlign: 'center',
           headerShown: true,
           tabBarIcon: ({ color, size }) => <Ionicons name="calendar" size={size} color={color} />,

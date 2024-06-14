@@ -6,6 +6,7 @@ import { ThemeColors } from '../theme/colors';
 import ExpensesOutput from '../components/ExpensesOutput/ExpensesOutput';
 
 import { DUMMY_EXPENSES } from '../data/dummy-data';
+import { translations } from '../i18n/translations';
 
 export interface IRecentExpensesProps extends INavigationProps {}
 
@@ -16,7 +17,7 @@ const RecentExpenses: React.FC<IRecentExpensesProps> = ({ navigation, route }) =
   return (
     <View style={styles.container}>
       {/* <Text style={styles.text}>Recent Expenses</Text> */}
-      <ExpensesOutput expenses={DUMMY_EXPENSES} periodName="Last 7 Days" />
+      <ExpensesOutput expenses={DUMMY_EXPENSES} periodName={translations.last7Days} />
     </View>
   );
 };
