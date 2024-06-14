@@ -12,7 +12,7 @@ const ExpensesOutput: React.FC<IExpensesOutputProps> = ({ expenses, periodName }
   return (
     <View>
       <ExpensesSummary expenses={expenses} periodName={periodName} />
-      <ExpensesList />
+      <ExpensesList expenses={expenses} />
     </View>
   );
 };
