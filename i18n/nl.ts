@@ -1,4 +1,5 @@
 export default {
+  add: 'Toevoegen',
   allExpenses: 'Alle Uitgaven',
   all: 'Alle',
   last7Days: 'Laatste 7 Dagen',

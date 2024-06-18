@@ -1,6 +1,7 @@
 import i18n from './i18n';
 
 export const translations = {
+  add: i18n.t('add'),
   allExpenses: i18n.t('allExpenses'),
   all: i18n.t('all'),
   last7Days: i18n.t('last7Days'),

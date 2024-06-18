@@ -48,7 +48,7 @@ const createStyles = (colors: ThemeColors) =>
       flexDirection: 'row',
       justifyContent: 'space-between',
       borderRadius: 6,
-      elevation: 4, // Android
+      elevation: 6, // Android
       // iOS
       shadowColor: colors.shadow,
       shadowRadius: 4,

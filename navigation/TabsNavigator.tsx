@@ -8,6 +8,7 @@ import { INavigationProps } from '../interfaces/INavigationProps';
 import { useSelector } from 'react-redux';
 import { RootState } from '../store/redux/store';
 import { translations } from '../i18n/translations';
+import TextButton from '../components/ui/TextButton';
 
 const BottomTab = createBottomTabNavigator();
 
@@ -33,6 +34,7 @@ const TabsNavigator: React.FC<ITabsNavigatorProps> = ({ navigation, route }) => 
         tabBarStyle: { backgroundColor: colors.background },
         tabBarInactiveTintColor: colors.inactiveIcon,
         tabBarActiveTintColor: colors.activeIcon,
+        headerRight: () => <TextButton title={translations.add} onPress={() => {}} />,
       }}
     >
       <BottomTab.Screen
@@ -41,7 +43,7 @@ const TabsNavigator: React.FC<ITabsNavigatorProps> = ({ navigation, route }) => 
         options={{
           title: translations.recentExpenses,
           tabBarLabel: translations.recent,
-          headerTitleAlign: 'center',
+          headerTitleAlign: 'left',
           headerShown: true,
           tabBarIcon: ({ color, size }) => <Ionicons name="hourglass" size={size} color={color} />,
         }}
@@ -53,7 +55,7 @@ const TabsNavigator: React.FC<ITabsNavigatorProps> = ({ navigation, route }) => 
         options={{
           title: translations.allExpenses,
           tabBarLabel: translations.all,
-          headerTitleAlign: 'center',
+          headerTitleAlign: 'left',
           headerShown: true,
           tabBarIcon: ({ color, size }) => <Ionicons name="calendar" size={size} color={color} />,
         }}
