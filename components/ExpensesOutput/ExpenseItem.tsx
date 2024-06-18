@@ -22,7 +22,7 @@ const ExpenseItem: React.FC<ExpenseItemProps> = ({ expenseItem, onPress }) => {
   const styles = useMemo(() => createStyles(colors), [colors]);
 
   return (
-    <Pressable onPress={onPress}>
+    <Pressable onPress={onPress} style={({ pressed }) => pressed && styles.pressed}>
       <View style={styles.expenseItem}>
         <View>
           <Text style={[styles.text, styles.title]}>{title}</Text>
@@ -75,5 +75,8 @@ const createStyles = (colors: ThemeColors) =>
     amount: {
       // fontWeight: 'bold',
       fontSize: 18,
+    },
+    pressed: {
+      opacity: 0.5,
     },
   });
