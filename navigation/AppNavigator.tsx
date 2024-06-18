@@ -8,10 +8,12 @@ import { useDispatch } from 'react-redux';
 import { setTheme } from '../store/redux/theme-slice';
 import { useSelector } from 'react-redux';
 import { RootState } from '../store/redux/store';
+import { ThemeColors } from '../theme/colors';
 
 const Stack = createNativeStackNavigator();
 
 const AppNavigator = () => {
+  const colors: ThemeColors = useSelector((state: RootState) => state.theme.colors);
   const dispatch = useDispatch();
   const isOnDarkTheme = useSelector((state: RootState) => state.theme.isDarkTheme);
 
@@ -27,9 +29,20 @@ const AppNavigator = () => {
   }, [isOnDarkTheme]);
   return (
     <NavigationContainer>
-      <Stack.Navigator>
+      <Stack.Navigator
+        screenOptions={{
+          headerStyle: { backgroundColor: colors.background },
+          headerTintColor: colors.tabBarHeaderText,
+        }}
+      >
         <Stack.Screen name="TabsNavigator" component={TabsNavigator} />
-        <Stack.Screen name="ManageExpenses" component={ManageExpenses} />
+        <Stack.Screen
+          name="ManageExpenses"
+          component={ManageExpenses}
+          options={{
+            presentation: 'modal',
+          }}
+        />
       </Stack.Navigator>
     </NavigationContainer>
   );
