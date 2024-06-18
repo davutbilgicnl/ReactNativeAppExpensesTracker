@@ -5,17 +5,18 @@ import { useSelector } from 'react-redux';
 import { RootState } from '../../store/redux/store';
 import ExpenseItem from './ExpenseItem';
 import { memo, useMemo } from 'react';
+import { INavigationProps } from '../../interfaces/INavigationProps';
 
-interface IExpensesListProps {
+interface IExpensesListProps extends INavigationProps {
   expenses: IExpense[];
 }
 
-const ExpensesList: React.FC<IExpensesListProps> = ({ expenses }) => {
-  const colors = useSelector((state: RootState) => state.theme.colors);
+const ExpensesList: React.FC<IExpensesListProps> = ({ navigation, route, expenses }) => {
+  const colors: ThemeColors = useSelector((state: RootState) => state.theme.colors);
   const styles = useMemo(() => createStyles(colors), [colors]);
 
-  const renderExpenseItem = ({ item }: { item: IExpense }) => {
-    return <ExpenseItem expenseItem={item} onPress={() => {}} />;
+  const renderExpenseItem = ({ item }: { item: IExpense }): JSX.Element => {
+    return <ExpenseItem expenseItem={item} navigation={navigation} route={route} />;
   };
 
   return (

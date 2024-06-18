@@ -25,6 +25,10 @@ const TabsNavigator: React.FC<ITabsNavigatorProps> = ({ navigation, route }) => 
     });
   }, [navigation]);
 
+  const navigationHandler = (navigationName: string): void => {
+    navigation.navigate(navigationName);
+  };
+
   return (
     <BottomTab.Navigator
       initialRouteName="RecentExpenses"
@@ -34,12 +38,16 @@ const TabsNavigator: React.FC<ITabsNavigatorProps> = ({ navigation, route }) => 
         tabBarStyle: { backgroundColor: colors.background },
         tabBarInactiveTintColor: colors.inactiveIcon,
         tabBarActiveTintColor: colors.activeIcon,
-        headerRight: () => <TextButton title={translations.add} onPress={() => {}} />,
+        headerRight: () => (
+          <TextButton
+            title={translations.add}
+            onPress={() => navigationHandler('ManageExpenses')}
+          />
+        ),
       }}
     >
       <BottomTab.Screen
         name="RecentExpenses"
-        component={RecentExpenses}
         options={{
           title: translations.recentExpenses,
           tabBarLabel: translations.recent,
@@ -47,11 +55,12 @@ const TabsNavigator: React.FC<ITabsNavigatorProps> = ({ navigation, route }) => 
           headerShown: true,
           tabBarIcon: ({ color, size }) => <Ionicons name="hourglass" size={size} color={color} />,
         }}
-      />
+      >
+        {() => <RecentExpenses navigation={navigation} route={route} />}
+      </BottomTab.Screen>
 
       <BottomTab.Screen
         name="AllExpenses"
-        component={AllExpenses}
         options={{
           title: translations.allExpenses,
           tabBarLabel: translations.all,
@@ -59,7 +68,9 @@ const TabsNavigator: React.FC<ITabsNavigatorProps> = ({ navigation, route }) => 
           headerShown: true,
           tabBarIcon: ({ color, size }) => <Ionicons name="calendar" size={size} color={color} />,
         }}
-      />
+      >
+        {() => <AllExpenses navigation={navigation} route={route} />}
+      </BottomTab.Screen>
     </BottomTab.Navigator>
   );
 };

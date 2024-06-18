@@ -6,13 +6,19 @@ import { formatCurrency } from '../../i18n/currency';
 import { ThemeColors } from '../../theme/colors';
 import { RootState } from '../../store/redux/store';
 import { useMemo } from 'react';
+import { INavigationProps } from '../../interfaces/INavigationProps';
 
-interface IExpensesSummaryProps {
+interface IExpensesSummaryProps extends INavigationProps {
   expenses: IExpense[];
   periodName: string;
 }
 
-const ExpensesSummary: React.FC<IExpensesSummaryProps> = ({ expenses, periodName }) => {
+const ExpensesSummary: React.FC<IExpensesSummaryProps> = ({
+  navigation,
+  route,
+  expenses,
+  periodName,
+}) => {
   const colors = useSelector((state: RootState) => state.theme.colors);
   const styles = useMemo(() => createStyles(colors), [colors]);
 

@@ -1,4 +1,6 @@
 import { Pressable, StyleSheet, Text, View } from 'react-native';
+import { NavigationProp, ParamListBase, useNavigation } from '@react-navigation/native';
+import { memo, useMemo } from 'react';
 
 import { IExpense } from '../../interfaces/IExpense';
 import { ThemeColors } from '../../theme/colors';
@@ -6,23 +8,27 @@ import { useSelector } from 'react-redux';
 import { RootState } from '../../store/redux/store';
 import { formatDate } from '../../i18n/date';
 import { formatCurrency } from '../../i18n/currency';
-import { memo, useMemo } from 'react';
+import { INavigationProps } from '../../interfaces/INavigationProps';
 
-interface ExpenseItemProps {
+interface ExpenseItemProps extends INavigationProps {
   expenseItem: IExpense;
-  onPress: () => void;
 }
 
-const ExpenseItem: React.FC<ExpenseItemProps> = ({ expenseItem, onPress }) => {
-  const { title, date, amount } = expenseItem;
+const ExpenseItem: React.FC<ExpenseItemProps> = ({ navigation, route, expenseItem }) => {
+  const colors: ThemeColors = useSelector((state: RootState) => state.theme.colors);
+  const styles = useMemo(() => createStyles(colors), [colors]);
+
+  const { id, title, date, amount } = expenseItem;
+
   const formattedDate = formatDate(date);
   const formattedAmount = formatCurrency(amount);
 
-  const colors = useSelector((state: RootState) => state.theme.colors);
-  const styles = useMemo(() => createStyles(colors), [colors]);
+  const expensePressHandler = () => {
+    navigation.navigate('ManageExpenses');
+  };
 
   return (
-    <Pressable onPress={onPress} style={({ pressed }) => pressed && styles.pressed}>
+    <Pressable onPress={expensePressHandler} style={({ pressed }) => pressed && styles.pressed}>
       <View style={styles.expenseItem}>
         <View>
           <Text style={[styles.text, styles.title]}>{title}</Text>

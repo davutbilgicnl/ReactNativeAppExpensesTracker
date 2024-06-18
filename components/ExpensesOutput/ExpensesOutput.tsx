@@ -6,19 +6,30 @@ import { RootState } from '../../store/redux/store';
 import { useSelector } from 'react-redux';
 import { ThemeColors } from '../../theme/colors';
 import { useMemo } from 'react';
+import { INavigationProps } from '../../interfaces/INavigationProps';
 
-interface IExpensesOutputProps {
+interface IExpensesOutputProps extends INavigationProps {
   expenses: IExpense[];
   periodName: string;
 }
 
-const ExpensesOutput: React.FC<IExpensesOutputProps> = ({ expenses, periodName }) => {
+const ExpensesOutput: React.FC<IExpensesOutputProps> = ({
+  navigation,
+  route,
+  expenses,
+  periodName,
+}) => {
   const colors = useSelector((state: RootState) => state.theme.colors);
   const styles = useMemo(() => createStyles(colors), [colors]);
   return (
     <View style={styles.container}>
-      <ExpensesSummary expenses={expenses} periodName={periodName} />
-      <ExpensesList expenses={expenses} />
+      <ExpensesSummary
+        expenses={expenses}
+        periodName={periodName}
+        navigation={navigation}
+        route={route}
+      />
+      <ExpensesList expenses={expenses} navigation={navigation} route={route} />
     </View>
   );
 };

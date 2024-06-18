@@ -18,7 +18,12 @@ const RecentExpenses: React.FC<IRecentExpensesProps> = ({ navigation, route }) =
   return (
     <View style={styles.container}>
       {/* <Text style={styles.text}>Recent Expenses</Text> */}
-      <ExpensesOutput expenses={DUMMY_EXPENSES} periodName={translations.last7Days} />
+      <ExpensesOutput
+        expenses={DUMMY_EXPENSES}
+        periodName={translations.last7Days}
+        navigation={navigation}
+        route={route}
+      />
     </View>
   );
 };

@@ -1,4 +1,6 @@
+import { useMemo } from 'react';
 import { Text, View, StyleSheet } from 'react-native';
+
 import { INavigationProps } from '../interfaces/INavigationProps';
 import { useSelector } from 'react-redux';
 import { RootState } from '../store/redux/store';
@@ -7,7 +9,6 @@ import ExpensesOutput from '../components/ExpensesOutput/ExpensesOutput';
 
 import { DUMMY_EXPENSES } from '../data/dummy-data';
 import { translations } from '../i18n/translations';
-import { useMemo } from 'react';
 
 export interface IAllExpensesProps extends INavigationProps {}
 
@@ -18,7 +19,12 @@ const AllExpenses: React.FC<IAllExpensesProps> = ({ navigation, route }) => {
   return (
     <View style={styles.container}>
       {/* <Text style={styles.text}>All Expenses</Text> */}
-      <ExpensesOutput expenses={DUMMY_EXPENSES} periodName={translations.total} />
+      <ExpensesOutput
+        expenses={DUMMY_EXPENSES}
+        periodName={translations.total}
+        navigation={navigation}
+        route={route}
+      />
     </View>
   );
 };
