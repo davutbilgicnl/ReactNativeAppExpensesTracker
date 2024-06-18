@@ -37,7 +37,8 @@ const createStyles = (colors: ThemeColors) =>
   StyleSheet.create({
     container: {
       padding: 8,
-      backgroundColor: colors.background,
+      marginHorizontal: 8,
+      backgroundColor: colors.expenseSummeryBackground,
       borderRadius: 6,
       flexDirection: 'row',
       justifyContent: 'space-between',

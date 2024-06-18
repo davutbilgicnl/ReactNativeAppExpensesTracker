@@ -34,8 +34,7 @@ export const lightColors = {
   text: '#543310',
   activeIcon: '#543310',
   inactiveIcon: '#AF8F6F',
-  priceBox: '#F8F4E1',
-  priceBoxBorder: '#543310',
+  expenseSummeryBackground: '#EADBC8',
   shadow: '##9E9E9E',
 };
 
@@ -75,8 +74,7 @@ export const darkColors = {
   text: '#F8F4E1',
   activeIcon: '#AF8F6F',
   inactiveIcon: '#543310',
-  priceBox: '#121212',
-  priceBoxBorder: '#F8F4E1',
+  expenseSummeryBackground: '#121212',
   shadow: '#9E9E9E',
 };
 

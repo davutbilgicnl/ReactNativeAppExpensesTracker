@@ -66,7 +66,6 @@ const createStyles = (colors: ThemeColors) =>
     amountContainer: {
       paddingHorizontal: 12,
       paddingVertical: 3,
-      backgroundColor: colors.priceBox,
       justifyContent: 'center',
       alignItems: 'center',
       // borderRadius: 4,
