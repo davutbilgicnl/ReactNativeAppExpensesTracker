@@ -5,7 +5,7 @@ export const lightColors = {
   secondaryVariant: '#6DC5D1',
   // background: '#FFFFFF',
   surface: '#FFFFFF',
-  error: '#B00020',
+  // error: '#B00020',
   onPrimary: '#FFFFFF',
   onSecondary: '#000000',
   onBackground: '#000000',
@@ -24,7 +24,7 @@ export const lightColors = {
   grey700: '#616161',
   grey800: '#424242',
   grey900: '#212121',
-  success: '#4CAF50',
+  // success: '#4CAF50',
   warning: '#FFC107',
   info: '#2196F3',
   light: '#F1F1F1',
@@ -36,7 +36,9 @@ export const lightColors = {
   activeIcon: '#543310',
   inactiveIcon: '#AF8F6F',
   expenseSummeryBackground: '#EADBC8',
-  shadow: '##9E9E9E',
+  shadow: '#9E9E9E',
+  success: '#4CAF50',
+  error: '#EE4E4E',
 };
 
 export const darkColors = {
@@ -46,7 +48,7 @@ export const darkColors = {
   secondaryVariant: '#C7B7A3',
   // background: '#121212',
   surface: '#121212',
-  error: '#CF6679',
+  // error: '#CF6679',
   onPrimary: '#000000',
   onSecondary: '#000000',
   onBackground: '#FFFFFF',
@@ -65,7 +67,7 @@ export const darkColors = {
   grey700: '#616161',
   grey800: '#424242',
   grey900: '#212121',
-  success: '#4CAF50',
+  // success: '#4CAF50',
   warning: '#FFC107',
   info: '#2196F3',
   light: '#F1F1F1',
@@ -78,6 +80,8 @@ export const darkColors = {
   inactiveIcon: '#543310',
   expenseSummeryBackground: '#424242',
   shadow: '#9E9E9E',
+  success: '#4CAF50',
+  error: '#CF6679',
 };
 
 export type ThemeColors = typeof lightColors | typeof darkColors;

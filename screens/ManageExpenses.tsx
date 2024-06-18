@@ -27,12 +27,20 @@ const ManageExpenses: React.FC<IManageExpensesProps> = ({ navigation, route }) =
     console.log('Deleting expense with id:', id);
   };
 
+  const updateExpenseHandler = (id: string) => {
+    console.log('Updating expense with id:', id);
+  };
+
+  const cancelUpdateHandler = () => {
+    navigation.goBack();
+  };
+
   const renderDeleteButton = (expenseId: string): React.ReactNode => {
     return (
       <View style={styles.deleteButtonContainer}>
         <TextButton
           title={translations.delete}
-          color={colors.text}
+          color={colors.error}
           fontSize={18}
           onPress={() => deleteExpenseHandler(expenseId)}
         />
@@ -40,7 +48,31 @@ const ManageExpenses: React.FC<IManageExpensesProps> = ({ navigation, route }) =
     );
   };
 
-  return <View style={styles.container}>{isEditing && renderDeleteButton(expenseId)}</View>;
+  const renderUdateAndCancelButtons = (expenseId: string): React.ReactNode => {
+    return (
+      <View style={styles.updatAndCancelContainer}>
+        <TextButton
+          title={translations.update}
+          color={colors.text}
+          fontSize={18}
+          onPress={() => updateExpenseHandler(expenseId)}
+        />
+        <TextButton
+          title={translations.cancel}
+          color={colors.text}
+          fontSize={18}
+          onPress={cancelUpdateHandler}
+        />
+      </View>
+    );
+  };
+
+  return (
+    <View style={styles.container}>
+      {expenseId && renderUdateAndCancelButtons(expenseId)}
+      {isEditing && renderDeleteButton(expenseId)}
+    </View>
+  );
 };
 
 export default ManageExpenses;
@@ -51,6 +83,11 @@ const createStyles = (colors: ThemeColors) =>
       flex: 1,
       padding: 24,
       backgroundColor: colors.background,
+    },
+    updatAndCancelContainer: {
+      flexDirection: 'row',
+      alignItems: 'center',
+      justifyContent: 'space-evenly',
     },
     deleteButtonContainer: {
       marginTop: 16,

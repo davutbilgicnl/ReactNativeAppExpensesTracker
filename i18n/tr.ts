@@ -3,11 +3,13 @@ export default {
   addExpense: 'Harcama Ekle',
   allExpenses: 'Tüm Harcamalar',
   all: 'Tümü',
+  cancel: 'İptal',
   delete: 'Sil',
   editExpense: 'Harcamayı Düzenle',
   last7Days: 'Son 7 Gün',
   recentExpenses: 'Güncel Harcamalar',
   recent: 'Güncel',
   total: 'Toplam',
+  update: 'Güncelle',
   welcome: 'Hoşgeldiniz!',
 };
