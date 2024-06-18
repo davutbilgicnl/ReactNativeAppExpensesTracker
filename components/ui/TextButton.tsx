@@ -6,17 +6,18 @@ import { useMemo } from 'react';
 
 interface ITextButtonProps {
   title: string;
+  color: string;
   onPress: () => void;
 }
 
-const TextButton: React.FC<ITextButtonProps> = ({ title, onPress }) => {
+const TextButton: React.FC<ITextButtonProps> = ({ title, color, onPress }) => {
   const colors = useSelector((state: RootState) => state.theme.colors);
   const styles = useMemo(() => createStyles(colors), [colors]);
 
   return (
     <Pressable onPress={onPress} style={({ pressed }) => pressed && styles.pressed}>
       <View style={styles.container}>
-        <Text style={styles.title}>{title}</Text>
+        <Text style={[styles.title, { color: color }]}>{title}</Text>
       </View>
     </Pressable>
   );
@@ -31,7 +32,6 @@ const createStyles = (colors: ThemeColors) =>
       paddingVertical: 6,
     },
     title: {
-      color: colors.text,
       fontSize: 16,
     },
     pressed: {

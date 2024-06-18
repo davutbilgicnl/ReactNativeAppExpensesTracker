@@ -32,6 +32,7 @@ export const lightColors = {
   //
   background: '#F8F4E1',
   text: '#543310',
+  tabBarHeaderText: '#543310',
   activeIcon: '#543310',
   inactiveIcon: '#AF8F6F',
   expenseSummeryBackground: '#EADBC8',
@@ -71,10 +72,11 @@ export const darkColors = {
   dark: '#121212',
   //---
   background: '#121212',
-  text: '#F8F4E1',
+  text: '#FED8B1',
+  tabBarHeaderText: '#AF8F6F',
   activeIcon: '#AF8F6F',
   inactiveIcon: '#543310',
-  expenseSummeryBackground: '#121212',
+  expenseSummeryBackground: '#424242',
   shadow: '#9E9E9E',
 };
 

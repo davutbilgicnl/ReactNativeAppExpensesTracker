@@ -34,13 +34,14 @@ const TabsNavigator: React.FC<ITabsNavigatorProps> = ({ navigation, route }) => 
       initialRouteName="RecentExpenses"
       screenOptions={{
         headerStyle: { backgroundColor: colors.background },
-        headerTintColor: colors.text,
+        headerTintColor: colors.tabBarHeaderText,
         tabBarStyle: { backgroundColor: colors.background },
         tabBarInactiveTintColor: colors.inactiveIcon,
         tabBarActiveTintColor: colors.activeIcon,
         headerRight: () => (
           <TextButton
             title={translations.add}
+            color={colors.tabBarHeaderText}
             onPress={() => navigationHandler('ManageExpenses')}
           />
         ),
