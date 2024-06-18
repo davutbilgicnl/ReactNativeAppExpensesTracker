@@ -6,6 +6,7 @@ import TextButton from '../components/ui/TextButton';
 import { useSelector } from 'react-redux';
 import { ThemeColors } from '../theme/colors';
 import { RootState } from '../store/redux/store';
+import { TEXT_BUTTON_SIZE } from '../constants';
 
 export interface IManageExpensesProps extends INavigationProps {
   expenseId?: string;
@@ -41,7 +42,7 @@ const ManageExpenses: React.FC<IManageExpensesProps> = ({ navigation, route }) =
         <TextButton
           title={translations.delete}
           color={colors.error}
-          fontSize={18}
+          fontSize={TEXT_BUTTON_SIZE}
           onPress={() => deleteExpenseHandler(expenseId)}
         />
       </View>
@@ -54,13 +55,13 @@ const ManageExpenses: React.FC<IManageExpensesProps> = ({ navigation, route }) =
         <TextButton
           title={translations.update}
           color={colors.text}
-          fontSize={18}
+          fontSize={TEXT_BUTTON_SIZE}
           onPress={() => updateExpenseHandler(expenseId)}
         />
         <TextButton
           title={translations.cancel}
           color={colors.text}
-          fontSize={18}
+          fontSize={TEXT_BUTTON_SIZE}
           onPress={cancelUpdateHandler}
         />
       </View>

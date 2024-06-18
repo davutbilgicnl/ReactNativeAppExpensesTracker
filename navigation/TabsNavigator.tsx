@@ -9,6 +9,7 @@ import { useSelector } from 'react-redux';
 import { RootState } from '../store/redux/store';
 import { translations } from '../i18n/translations';
 import TextButton from '../components/ui/TextButton';
+import { TEXT_BUTTON_SIZE } from '../constants';
 
 const BottomTab = createBottomTabNavigator();
 
@@ -42,7 +43,7 @@ const TabsNavigator: React.FC<ITabsNavigatorProps> = ({ navigation, route }) => 
           <TextButton
             title={translations.add}
             color={colors.tabBarHeaderText}
-            fontSize={18}
+            fontSize={TEXT_BUTTON_SIZE}
             onPress={() => navigationHandler('ManageExpenses')}
           />
         ),
