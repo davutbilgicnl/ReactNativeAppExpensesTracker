@@ -3,6 +3,8 @@ import { IExpense } from '../../interfaces/IExpense';
 import { ThemeColors } from '../../theme/colors';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../store/redux/store';
+import ExpenseItem from './ExpenseItem';
+import { memo, useMemo } from 'react';
 
 interface IExpensesListProps {
   expenses: IExpense[];
@@ -10,10 +12,10 @@ interface IExpensesListProps {
 
 const ExpensesList: React.FC<IExpensesListProps> = ({ expenses }) => {
   const colors = useSelector((state: RootState) => state.theme.colors);
-  const styles = createStyles(colors);
+  const styles = useMemo(() => createStyles(colors), [colors]);
 
   const renderExpenseItem = ({ item }: { item: IExpense }) => {
-    return <Text style={styles.expenseItem}>{item.title}</Text>;
+    return <ExpenseItem expenseItem={item} onPress={() => {}} />;
   };
 
   return (
@@ -28,16 +30,15 @@ const ExpensesList: React.FC<IExpensesListProps> = ({ expenses }) => {
   );
 };
 
-export default ExpensesList;
+export default memo(ExpensesList);
 
 const createStyles = (colors: ThemeColors) =>
   StyleSheet.create({
     flatListContainer: {
-      backgroundColor: colors.secondary,
+      backgroundColor: colors.background,
     },
     flatList: {},
     expenseItem: {
       color: colors.text,
-      // padding: 8,
     },
   });

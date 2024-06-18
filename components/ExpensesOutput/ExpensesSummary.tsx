@@ -5,6 +5,7 @@ import { IExpense } from '../../interfaces/IExpense';
 import { formatCurrency } from '../../i18n/currency';
 import { ThemeColors } from '../../theme/colors';
 import { RootState } from '../../store/redux/store';
+import { useMemo } from 'react';
 
 interface IExpensesSummaryProps {
   expenses: IExpense[];
@@ -13,7 +14,7 @@ interface IExpensesSummaryProps {
 
 const ExpensesSummary: React.FC<IExpensesSummaryProps> = ({ expenses, periodName }) => {
   const colors = useSelector((state: RootState) => state.theme.colors);
-  const styles = createStyles(colors);
+  const styles = useMemo(() => createStyles(colors), [colors]);
 
   const initalValueOfSum = 0;
   const expensesSummary = expenses.reduce((sum, expense) => {
@@ -36,7 +37,7 @@ const createStyles = (colors: ThemeColors) =>
   StyleSheet.create({
     container: {
       padding: 8,
-      backgroundColor: colors.primary,
+      backgroundColor: colors.background,
       borderRadius: 6,
       flexDirection: 'row',
       justifyContent: 'space-between',

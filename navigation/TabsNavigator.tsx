@@ -31,7 +31,8 @@ const TabsNavigator: React.FC<ITabsNavigatorProps> = ({ navigation, route }) => 
         headerStyle: { backgroundColor: colors.background },
         headerTintColor: colors.text,
         tabBarStyle: { backgroundColor: colors.background },
-        tabBarActiveTintColor: colors.text,
+        tabBarInactiveTintColor: colors.inactiveIcon,
+        tabBarActiveTintColor: colors.activeIcon,
       }}
     >
       <BottomTab.Screen

@@ -7,12 +7,13 @@ import ExpensesOutput from '../components/ExpensesOutput/ExpensesOutput';
 
 import { DUMMY_EXPENSES } from '../data/dummy-data';
 import { translations } from '../i18n/translations';
+import { useMemo } from 'react';
 
 export interface IRecentExpensesProps extends INavigationProps {}
 
 const RecentExpenses: React.FC<IRecentExpensesProps> = ({ navigation, route }) => {
   const colors = useSelector((state: RootState) => state.theme.colors);
-  const styles = createStyles(colors);
+  const styles = useMemo(() => createStyles(colors), [colors]);
 
   return (
     <View style={styles.container}>
@@ -30,7 +31,7 @@ const createStyles = (colors: ThemeColors) =>
       // flex: 1,
       // justifyContent: 'center',
       // alignItems: 'center',
-      backgroundColor: colors.secondary,
+      backgroundColor: colors.background,
     },
     text: {
       color: colors.text,

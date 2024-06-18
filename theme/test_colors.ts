@@ -1,10 +1,10 @@
 // theme/colors.ts
 
 export const lightColors = {
-  primary: '#6200EE',
-  primaryVariant: '#3700B3',
-  secondary: '#03DAC6',
-  secondaryVariant: '#018786',
+  primary: '#FF7D29',
+  primaryVariant: '#DC5F00',
+  secondary: '#B5C18E',
+  secondaryVariant: '#C7B7A3',
   background: '#FFFFFF',
   surface: '#FFFFFF',
   error: '#B00020',
@@ -34,10 +34,10 @@ export const lightColors = {
 };
 
 export const darkColors = {
-  primary: '#BB86FC',
-  primaryVariant: '#3700B3',
-  secondary: '#03DAC6',
-  secondaryVariant: '#03DAC6',
+  primary: '#FF7F3E',
+  primaryVariant: '#DC5F00',
+  secondary: '#B5C18E',
+  secondaryVariant: '#C7B7A3',
   background: '#121212',
   surface: '#121212',
   error: '#CF6679',

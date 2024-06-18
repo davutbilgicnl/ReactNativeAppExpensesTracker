@@ -5,6 +5,7 @@ import { IExpense } from '../../interfaces/IExpense';
 import { RootState } from '../../store/redux/store';
 import { useSelector } from 'react-redux';
 import { ThemeColors } from '../../theme/colors';
+import { useMemo } from 'react';
 
 interface IExpensesOutputProps {
   expenses: IExpense[];
@@ -13,7 +14,7 @@ interface IExpensesOutputProps {
 
 const ExpensesOutput: React.FC<IExpensesOutputProps> = ({ expenses, periodName }) => {
   const colors = useSelector((state: RootState) => state.theme.colors);
-  const styles = createStyles(colors);
+  const styles = useMemo(() => createStyles(colors), [colors]);
   return (
     <View style={styles.container}>
       <ExpensesSummary expenses={expenses} periodName={periodName} />
@@ -29,6 +30,6 @@ const createStyles = (colors: ThemeColors) =>
     container: {
       flex: 1,
       padding: 24,
-      backgroundColor: colors.secondary,
+      backgroundColor: colors.background,
     },
   });
