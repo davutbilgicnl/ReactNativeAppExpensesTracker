@@ -5,6 +5,7 @@ export const translations = {
   addExpense: i18n.t('addExpense'),
   allExpenses: i18n.t('allExpenses'),
   all: i18n.t('all'),
+  delete: i18n.t('delete'),
   editExpense: i18n.t('editExpense'),
   last7Days: i18n.t('last7Days'),
   recentExpenses: i18n.t('recentExpenses'),

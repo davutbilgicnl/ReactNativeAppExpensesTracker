@@ -42,6 +42,7 @@ const TabsNavigator: React.FC<ITabsNavigatorProps> = ({ navigation, route }) => 
           <TextButton
             title={translations.add}
             color={colors.tabBarHeaderText}
+            fontSize={18}
             onPress={() => navigationHandler('ManageExpenses')}
           />
         ),

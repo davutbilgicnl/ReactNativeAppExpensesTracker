@@ -3,6 +3,7 @@ export default {
   addExpense: 'Add Expense',
   allExpenses: 'All Expenses',
   all: 'All',
+  delete: 'Delete',
   editExpense: 'Edit Expense',
   last7Days: 'Last 7 Days',
   recentExpenses: 'Recent Expenses',

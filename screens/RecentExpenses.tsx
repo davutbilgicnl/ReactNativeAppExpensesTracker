@@ -12,7 +12,7 @@ import { useMemo } from 'react';
 export interface IRecentExpensesProps extends INavigationProps {}
 
 const RecentExpenses: React.FC<IRecentExpensesProps> = ({ navigation, route }) => {
-  const colors = useSelector((state: RootState) => state.theme.colors);
+  const colors: ThemeColors = useSelector((state: RootState) => state.theme.colors);
   const styles = useMemo(() => createStyles(colors), [colors]);
 
   return (
@@ -33,7 +33,7 @@ export default RecentExpenses;
 const createStyles = (colors: ThemeColors) =>
   StyleSheet.create({
     container: {
-      // flex: 1,
+      flex: 1,
       // justifyContent: 'center',
       // alignItems: 'center',
       backgroundColor: colors.background,
