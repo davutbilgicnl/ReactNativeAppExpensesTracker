@@ -24,7 +24,7 @@ const ExpenseItem: React.FC<ExpenseItemProps> = ({ navigation, route, expenseIte
   const formattedAmount = formatCurrency(amount);
 
   const expensePressHandler = () => {
-    navigation.navigate('ManageExpenses');
+    navigation.navigate('ManageExpenses', { expenseId: id });
   };
 
   return (
