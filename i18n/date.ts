@@ -1,9 +1,11 @@
 import i18n from './i18n';
 import * as Localization from 'expo-localization';
 
-export const formatDate = (date: Date): string => {
+export const formatDate = (date: Date | string): string => {
   try {
-    return i18n.strftime(date, '%d-%m-%Y').toString();
+    const dateObj = typeof date === 'string' ? new Date(date) : date;
+    const formattedDate = i18n.strftime(dateObj, '%d-%m-%Y');
+    return formattedDate.toString();
   } catch (error) {
     console.error('Error formatting currency:', error);
     throw error;

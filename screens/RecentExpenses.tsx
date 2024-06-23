@@ -5,7 +5,6 @@ import { RootState } from '../store/redux/store';
 import { ThemeColors } from '../theme/colors';
 import ExpensesOutput from '../components/ExpensesOutput/ExpensesOutput';
 
-import { DUMMY_EXPENSES } from '../data/dummy-data';
 import { translations } from '../i18n/translations';
 import { useMemo } from 'react';
 
@@ -15,11 +14,12 @@ const RecentExpenses: React.FC<IRecentExpensesProps> = ({ navigation, route }) =
   const colors: ThemeColors = useSelector((state: RootState) => state.theme.colors);
   const styles = useMemo(() => createStyles(colors), [colors]);
 
+  const { loading, expenses, error } = useSelector((state: RootState) => state.expenses);
+
   return (
     <View style={styles.container}>
-      {/* <Text style={styles.text}>Recent Expenses</Text> */}
       <ExpensesOutput
-        expenses={DUMMY_EXPENSES}
+        expenses={expenses}
         periodName={translations.last7Days}
         navigation={navigation}
         route={route}

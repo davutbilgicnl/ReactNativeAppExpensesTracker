@@ -12,5 +12,5 @@ export interface IExpense {
   title: string;
   amount: number;
   currencyCode: string;
-  date: Date;
+  date: string;
 }

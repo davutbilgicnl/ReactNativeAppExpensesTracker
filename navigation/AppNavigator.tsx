@@ -7,14 +7,15 @@ import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { setTheme } from '../store/redux/theme-slice';
 import { useSelector } from 'react-redux';
-import { RootState } from '../store/redux/store';
+import { AppDispatch, RootState } from '../store/redux/store';
 import { ThemeColors } from '../theme/colors';
+import { fetchExpenses } from '../store/redux/expenses-slice';
 
 const Stack = createNativeStackNavigator();
 
 const AppNavigator = () => {
   const colors: ThemeColors = useSelector((state: RootState) => state.theme.colors);
-  const dispatch = useDispatch();
+  const dispatch: AppDispatch = useDispatch();
   const isOnDarkTheme = useSelector((state: RootState) => state.theme.isDarkTheme);
 
   const handleAppearanceChange = (preferences: Appearance.AppearancePreferences) => {
@@ -22,11 +23,20 @@ const AppNavigator = () => {
     dispatch(setTheme(theme));
   };
 
+  // Fetch expenses from the server
+  useEffect(() => {
+    const fetchExpensesFromServer = async () => {
+      await dispatch(fetchExpenses());
+    };
+    fetchExpensesFromServer();
+  }, []);
+
   useEffect(() => {
     const subscription = Appearance.addChangeListener(handleAppearanceChange);
 
     return () => subscription.remove();
   }, [isOnDarkTheme]);
+
   return (
     <NavigationContainer>
       <Stack.Navigator

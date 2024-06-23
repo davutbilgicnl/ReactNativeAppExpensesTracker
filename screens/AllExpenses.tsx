@@ -1,26 +1,26 @@
-import { useMemo } from 'react';
+import { useLayoutEffect, useMemo } from 'react';
 import { Text, View, StyleSheet } from 'react-native';
 
 import { INavigationProps } from '../interfaces/INavigationProps';
 import { useSelector } from 'react-redux';
-import { RootState } from '../store/redux/store';
+import { AppDispatch, RootState } from '../store/redux/store';
 import { ThemeColors } from '../theme/colors';
 import ExpensesOutput from '../components/ExpensesOutput/ExpensesOutput';
 
-import { DUMMY_EXPENSES } from '../data/dummy-data';
 import { translations } from '../i18n/translations';
 
 export interface IAllExpensesProps extends INavigationProps {}
 
 const AllExpenses: React.FC<IAllExpensesProps> = ({ navigation, route }) => {
+  const { loading, expenses, error } = useSelector((state: RootState) => state.expenses);
+
   const colors = useSelector((state: RootState) => state.theme.colors);
   const styles = useMemo(() => createStyles(colors), [colors]);
 
   return (
     <View style={styles.container}>
-      {/* <Text style={styles.text}>All Expenses</Text> */}
       <ExpensesOutput
-        expenses={DUMMY_EXPENSES}
+        expenses={expenses}
         periodName={translations.total}
         navigation={navigation}
         route={route}
