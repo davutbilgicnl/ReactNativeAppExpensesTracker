@@ -3,10 +3,11 @@ import { INavigationProps } from '../interfaces/INavigationProps';
 import React, { useLayoutEffect, useMemo } from 'react';
 import { translations } from '../i18n/translations';
 import TextButton from '../components/ui/TextButton';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { ThemeColors } from '../theme/colors';
-import { RootState } from '../store/redux/store';
+import { AppDispatch, RootState } from '../store/redux/store';
 import { TEXT_BUTTON_SIZE } from '../constants';
+import { deleteExpense } from '../store/redux/expenses-slice';
 
 export interface IManageExpensesProps extends INavigationProps {
   expenseId?: string;
@@ -15,6 +16,10 @@ export interface IManageExpensesProps extends INavigationProps {
 const ManageExpenses: React.FC<IManageExpensesProps> = ({ navigation, route }) => {
   const colors: ThemeColors = useSelector((state: RootState) => state.theme.colors);
   const styles = useMemo(() => createStyles(colors), [colors]);
+
+  const { loading } = useSelector((state: RootState) => state.expenses);
+  const dispatch: AppDispatch = useDispatch();
+
   const expenseId = (route.params as IManageExpensesProps)?.expenseId;
   const isEditing = !!expenseId;
 
@@ -25,7 +30,10 @@ const ManageExpenses: React.FC<IManageExpensesProps> = ({ navigation, route }) =
   }, [navigation, isEditing]);
 
   const deleteExpenseHandler = (id: string) => {
-    console.log('Deleting expense with id:', id);
+    console.log('Deleting:', loading);
+
+    dispatch(deleteExpense(id));
+    navigation.goBack();
   };
 
   const updateExpenseHandler = (id: string) => {

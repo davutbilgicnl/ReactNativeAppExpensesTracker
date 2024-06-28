@@ -2,7 +2,7 @@ import { IExpense } from '../interfaces/IExpense';
 import { DUMMY_EXPENSES } from '../data/dummy-data';
 
 // Simulate network delay
-const simulateNetworkDelay = async () => await new Promise((resolve) => setTimeout(resolve, 1000));
+const simulateNetworkDelay = async () => await new Promise((resolve) => setTimeout(resolve, 2500));
 
 // Utility function to find the index of an expense by its ID
 const findExpenseIndexById = (expenses: IExpense[], expenseId: string) =>

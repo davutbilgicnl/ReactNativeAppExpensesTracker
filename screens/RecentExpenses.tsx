@@ -7,6 +7,8 @@ import ExpensesOutput from '../components/ExpensesOutput/ExpensesOutput';
 
 import { translations } from '../i18n/translations';
 import { useMemo } from 'react';
+import { filterItemsWithinDays } from '../utils/filter-items-within-days';
+import { filterItemsWithinHours } from '../utils/filter-items-within-hours';
 
 export interface IRecentExpensesProps extends INavigationProps {}
 
@@ -16,10 +18,13 @@ const RecentExpenses: React.FC<IRecentExpensesProps> = ({ navigation, route }) =
 
   const { loading, expenses, error } = useSelector((state: RootState) => state.expenses);
 
+  const filteredExpenses = filterItemsWithinDays(expenses, 7);
+  // const filteredExpenses = filterItemsWithinHours(expenses, 24);
+
   return (
     <View style={styles.container}>
       <ExpensesOutput
-        expenses={expenses}
+        expenses={filteredExpenses}
         periodName={translations.last7Days}
         navigation={navigation}
         route={route}

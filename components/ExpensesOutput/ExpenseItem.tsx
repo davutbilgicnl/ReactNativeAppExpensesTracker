@@ -9,6 +9,7 @@ import { RootState } from '../../store/redux/store';
 import { formatDate } from '../../i18n/date';
 import { formatCurrency } from '../../i18n/currency';
 import { INavigationProps } from '../../interfaces/INavigationProps';
+import { getTimeOfDate } from '../../i18n/time';
 
 interface ExpenseItemProps extends INavigationProps {
   expenseItem: IExpense;
@@ -21,6 +22,7 @@ const ExpenseItem: React.FC<ExpenseItemProps> = ({ navigation, route, expenseIte
   const { id, title, date, amount } = expenseItem;
 
   const formattedDate = formatDate(date);
+  const formattedTime = getTimeOfDate(date);
   const formattedAmount = formatCurrency(amount);
 
   const expensePressHandler = () => {
@@ -32,7 +34,9 @@ const ExpenseItem: React.FC<ExpenseItemProps> = ({ navigation, route, expenseIte
       <View style={styles.expenseItem}>
         <View>
           <Text style={[styles.text, styles.title]}>{title}</Text>
-          <Text style={styles.text}>{formattedDate}</Text>
+          <Text style={styles.text}>
+            {formattedDate} {formattedTime}
+          </Text>
         </View>
         <View style={styles.amountContainer}>
           <Text style={[styles.text, styles.amount]}>{formattedAmount}</Text>
